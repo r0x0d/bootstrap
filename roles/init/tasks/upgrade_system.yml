@@ -1,0 +1,7 @@
+- name: Upgrade all packages
+  become: yes
+  become_user: root
+  ansible.builtin.dnf:
+    name: "*"
+    state: latest
+
