@@ -1,0 +1,2 @@
+- name: Run konsave and apply desktop setting
+  ansible.builtin.command: /usr/local/bin/konsave --apply 1

@@ -1,0 +1,10 @@
+---
+- name: Install the latest version of unzip
+  ansible.builtin.dnf:
+    name: unzip
+    state: latest
+
+- name: Install the latest version of python-pip
+  ansible.builtin.dnf:
+    name: python-pip
+    state: latest

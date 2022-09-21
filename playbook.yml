@@ -1,0 +1,22 @@
+- hosts: all
+  become: true
+  vars_files:
+    - variables/tlp.yml
+    - variables/rpmfusion.yml 
+    - variables/packer.yml
+    - variables/java.yml  
+    - variables/sync_files.yml
+    - variables/conditionals.yml
+
+  pre_tasks:
+    - import_tasks: tasks/pre_tasks.yml
+
+  roles:
+    - role: robertdebock.tlp
+    - role: robertdebock.rpmfusion
+    - role: robertdebock.packer
+    - role: robertdebock.java
+
+  tasks:
+    - import_tasks: tasks/tasks.yml
+  

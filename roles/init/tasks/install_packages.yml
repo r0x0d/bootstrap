@@ -1,7 +1,0 @@
-- name: Install the 'Development tools' package group
-  become: yes
-  become_user: root
-  ansible.builtin.dnf:
-    name: 
-      - '@Development tools'
-    state: present
