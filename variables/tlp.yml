@@ -1,0 +1,4 @@
+tlp_bateries:
+  - name: BAT0
+    start_threshold: 70
+    stop_threshold: 95

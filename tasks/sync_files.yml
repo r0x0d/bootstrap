@@ -1,0 +1,36 @@
+- name: Copy konsave configuration folder
+  ansible.builtin.copy:
+    src: ../files/konsave
+    dest: "/home/{{ owner }}/.config"
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+
+- name: Copy .vimrc configuration file 
+  ansible.builtin.copy:
+    src: ../files/.vimrc
+    dest: "/home/{{ owner }}/.vimrc"
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+
+- name: Copy top-level .gitconfig
+  ansible.builtin.copy:
+    src: ../files/.gitconfig
+    dest: "/home/{{ owner }}/.gitconfig"
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+
+- name: Copy personal .gitconfig
+  ansible.builtin.copy:
+    src: ../files/.gitconfig.personal
+    dest: "/home/{{ owner }}/.gitconfig.extended"
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+  when: personal | bool
+
+- name: Copy Red Hat .gitconfig
+  ansible.builtin.copy:
+    src: ../files/.gitconfig.redhat
+    dest: "/home/{{ owner }}/.gitconfig.extended"
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+  when: redhat | bool

@@ -1,0 +1,62 @@
+---
+- name: Install the latest version of editors
+  ansible.builtin.dnf:
+    name: 
+      - vim-X11
+      - code
+    state: latest
+
+- name: Install the latest version of podman
+  ansible.builtin.dnf:
+    name: podman
+    state: latest
+
+- name: Install the latest version of vagrant
+  ansible.builtin.dnf:
+    name: vagrant
+    state: latest
+
+- name: Install the latest version of ripgrep
+  ansible.builtin.dnf:
+    name: ripgrep
+    state: latest
+
+- name: Install the latest version of virtualization packages
+  ansible.builtin.dnf:
+    name:
+      - qemu
+      - libvirt
+      - wine
+    state: latest
+
+- name: Install the latest version of vlc
+  ansible.builtin.dnf:
+    name: vlc
+    state: latest
+
+- name: Install the latest version of group packages
+  ansible.builtin.dnf:
+    name:
+      - "@Development Tools"
+    state: latest
+
+- name: Install some versions of python
+  ansible.builtin.dnf:
+    name:
+      - python2
+      - python37
+      - python38
+      - python39
+      - python310
+      - python
+    state: latest
+
+- name: Install konsave python package
+  ansible.builtin.pip:
+    name: konsave
+
+# TODO(r0x0d): Run lpf update after install
+- name: Install the latest version of Spotify
+  ansible.builtin.dnf:
+    name: lpf-spotify-client
+    state: latest

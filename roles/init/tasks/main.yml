@@ -1,4 +1,0 @@
----
-- include: upgrade_system.yml
-- include: install_packages.yml
-- include: cleanup.yml

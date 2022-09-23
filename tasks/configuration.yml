@@ -1,0 +1,17 @@
+- name: Append configurations to dnf.conf
+  blockinfile:
+    state: absent
+    insertafter: EOF
+    dest: /etc/dnf/dnf.conf
+    marker: "# ANSIBLE MANAGED BLOCK"
+    content: |
+      fastestmirror=1
+
+- name: Append aliases to .bashrc
+  blockinfile:
+    state: absent
+    insertafter: EOF
+    dest: $HOME/.bashrc
+    marker: "# ANSIBLE MANAGED BLOCK"
+    content: |
+      alias vim="vimx"
