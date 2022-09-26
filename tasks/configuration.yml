@@ -1,6 +1,6 @@
 - name: Append configurations to dnf.conf
   blockinfile:
-    state: absent
+    state: present
     insertafter: EOF
     dest: /etc/dnf/dnf.conf
     marker: "# ANSIBLE MANAGED BLOCK"
@@ -9,7 +9,7 @@
 
 - name: Append aliases to .bashrc
   blockinfile:
-    state: absent
+    state: present
     insertafter: EOF
     dest: $HOME/.bashrc
     marker: "# ANSIBLE MANAGED BLOCK"
