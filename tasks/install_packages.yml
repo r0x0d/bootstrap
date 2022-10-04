@@ -1,7 +1,7 @@
 ---
 - name: Install the latest version of editors
   ansible.builtin.dnf:
-    name: 
+    name:
       - vim-X11
       - code
     state: latest
@@ -55,8 +55,13 @@
   ansible.builtin.pip:
     name: konsave
 
-# TODO(r0x0d): Run lpf update after install
 - name: Install the latest version of Spotify
+  community.general.flatpak:
+    name: com.spotify.Client
+    state: present
+
+#TODO(r0x0d): Remove this link when they finally package this and release in Fedora.
+- name: Install bitwarden desktop
   ansible.builtin.dnf:
-    name: lpf-spotify-client
+    name: "https://github.com/bitwarden/clients/releases/download/desktop-v2022.9.1/Bitwarden-2022.9.1-x86_64.rpm"
     state: latest
