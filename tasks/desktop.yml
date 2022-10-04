@@ -1,2 +1,3 @@
 - name: Run konsave and apply desktop setting
-  ansible.builtin.command: /usr/local/bin/konsave --apply 1
+  become_user: "{{ owner }}"
+  ansible.builtin.command: /usr/local/bin/konsave --apply default
