@@ -1,4 +1,3 @@
 - name: Autoremove unneeded packages installed as dependencies
   ansible.builtin.dnf:
     autoremove: yes
-

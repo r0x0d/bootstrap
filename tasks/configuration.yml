@@ -8,6 +8,7 @@
       fastestmirror=1
 
 - name: Append aliases to .bashrc
+  become_user: "{{ owner }}"
   blockinfile:
     state: present
     insertafter: EOF
@@ -15,3 +16,5 @@
     marker: "# ANSIBLE MANAGED BLOCK"
     content: |
       alias vim="vimx"
+    owner: "{{ owner }}"
+    group: "{{ group }}"

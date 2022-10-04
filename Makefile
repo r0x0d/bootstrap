@@ -18,4 +18,4 @@ vagrant: destroy up
 
 local: 
 	sudo ansible-galaxy install -r=requirements.yml -p=roles/
-	ansible-playbook playbook.yml --extra-vars="$(ANSIBLE_EXTRA_VARS)"
+	sudo ansible-playbook playbook.yml --extra-vars="$(ANSIBLE_EXTRA_VARS)"
