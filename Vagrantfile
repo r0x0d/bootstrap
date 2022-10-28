@@ -81,9 +81,6 @@ Vagrant.configure("2") do |config|
     service sshd restart
     restorecon -R -v /root/.ssh
     echo "root:vagrant"|chpasswd
-
-    # KDE setup
-    sudo dnf groupinstall "KDE Plasma Workspaces" -y 
   EOL
   
   config.vm.provision "ansible_local" do |ansible|

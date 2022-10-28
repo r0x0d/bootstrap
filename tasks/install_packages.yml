@@ -2,7 +2,7 @@
 - name: Install the latest version of editors
   ansible.builtin.dnf:
     name:
-      - vim-X11
+      - neovim
       - code
     state: latest
 
@@ -43,12 +43,13 @@
 - name: Install some versions of python
   ansible.builtin.dnf:
     name:
+      - python
       - python2
       - python37
       - python38
       - python39
       - python310
-      - python
+      - python311
     state: latest
 
 - name: Install konsave python package
