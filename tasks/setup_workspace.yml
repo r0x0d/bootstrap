@@ -1,0 +1,15 @@
+- name: Creating workspace folder if it doesn't exist
+  ansible.builtin.file:
+    path: "{{ workspace_destination }}"
+    state: directory
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+  tags: test
+
+- name: Clone specific repositories from github
+  ansible.builtin.git:
+    repo: git@github.com:{{ item }}.git
+    dest: "{{ workspace_destination }}/{{ item }}"
+    state: present
+  loop:
+    - "{{ github_repositories }}"

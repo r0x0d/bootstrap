@@ -1,8 +1,10 @@
 ---
-- name: Install misc packages 
+- name: Install misc packages
   ansible.builtin.dnf:
     name:
       - rsync
+      - direnv
+      - poetry
     state: latest
 
 - name: Install the latest version of editors
@@ -70,22 +72,5 @@
 
 - name: Install the latest version of Postman
   community.general.flatpak:
-    name: com.getpostman.Postmandesktop-file-utils
+    name: com.getpostman.Postman
     state: present
-
-#TODO(r0x0d): Remove this link when they finally package this and release in Fedora.
-- name: Install bitwarden desktop
-  ansible.builtin.dnf:
-    name: "https://github.com/bitwarden/clients/releases/download/desktop-v2022.9.1/Bitwarden-2022.10.1-x86_64.rpm"
-    state: latest
-
-- name: Install direnv
-  ansible.builtin.dnf:
-    name: direnv
-    state: latest
-
-- name: Install different package managers
-  ansible.builtin.dnf:
-    name:
-      - poetry
-    state: latest

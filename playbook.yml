@@ -11,6 +11,7 @@
     - variables/docker_ce.yml
     - variables/clamav.yml
     - variables/ghidra.yml
+    - variables/setup_workspace.yml
 
   pre_tasks:
     - import_tasks: tasks/pre_tasks.yml
@@ -23,7 +24,7 @@
     - role: robertdebock.docker_compose
     - role: robertdebock.docker_ce
     - role: robertdebock.clamav
-    - role: scrool.ghidra
+    - role: ansible-role-ghidra
 
   tasks:
     - import_tasks: tasks/tasks.yml
