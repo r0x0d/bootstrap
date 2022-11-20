@@ -3,3 +3,7 @@
 - src: robertdebock.rpmfusion
 - src: robertdebock.packer
 - src: robertdebock.java
+- src: robertdebock.docker_compose
+- src: robertdebock.docker_ce
+- src: robertdebock.clamav
+- src: scrool.ghidra

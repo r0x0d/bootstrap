@@ -15,6 +15,6 @@
     dest: $HOME/.bashrc
     marker: "# ANSIBLE MANAGED BLOCK"
     content: |
-      alias vim="nvim"
+      eval "$(direnv hook bash)"
     owner: "{{ owner }}"
     group: "{{ group }}"
