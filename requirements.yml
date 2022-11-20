@@ -6,4 +6,4 @@
 - src: robertdebock.docker_compose
 - src: robertdebock.docker_ce
 - src: robertdebock.clamav
-- src: scrool.ghidra
+- src: https://github.com/scrool/ansible-role-ghidra

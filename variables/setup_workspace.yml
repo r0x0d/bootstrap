@@ -1,0 +1,6 @@
+---
+workspace_destination: "/home/{{ owner }}/Workspace"
+github_repositories: 
+  - r0x0d/r0x0d.github.io
+  - r0x0d/dismod
+  - carnage-world/carnage
