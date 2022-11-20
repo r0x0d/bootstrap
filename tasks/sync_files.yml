@@ -4,11 +4,19 @@
     dest: "/home/{{ owner }}/.config"
     owner: "{{ owner }}"
     group: "{{ group }}"
-
-- name: Copy neovim configuration folder 
+  when: kde | bool 
+  
+- name: Copy direnv configuration folder
   ansible.builtin.copy:
-    src: ../files/nvim
+    src: ../files/direnv
     dest: "/home/{{ owner }}/.config"
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+
+- name: Copy vim configuration folder 
+  ansible.builtin.copy:
+    src: ../files/.vimrc
+    dest: "/home/{{ owner }}/.vimrc"
     owner: "{{ owner }}"
     group: "{{ group }}"
 

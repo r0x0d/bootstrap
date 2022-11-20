@@ -1,3 +1,4 @@
 - name: Run konsave and apply desktop setting
   become_user: "{{ owner }}"
   ansible.builtin.command: /usr/local/bin/konsave --apply default
+  when: kde | bool

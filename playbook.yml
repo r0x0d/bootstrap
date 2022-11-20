@@ -7,6 +7,10 @@
     - variables/java.yml  
     - variables/sync_files.yml
     - variables/conditionals.yml
+    - variables/docker_compose.yml
+    - variables/docker_ce.yml
+    - variables/clamav.yml
+    - variables/ghidra.yml
 
   pre_tasks:
     - import_tasks: tasks/pre_tasks.yml
@@ -16,6 +20,10 @@
     - role: robertdebock.rpmfusion
     - role: robertdebock.packer
     - role: robertdebock.java
+    - role: robertdebock.docker_compose
+    - role: robertdebock.docker_ce
+    - role: robertdebock.clamav
+    - role: scrool.ghidra
 
   tasks:
     - import_tasks: tasks/tasks.yml
