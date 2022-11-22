@@ -25,6 +25,8 @@
     - role: robertdebock.docker_ce
     - role: robertdebock.clamav
     - role: ansible-role-ghidra
+    - role: ansible-role-redhat
+      when: redhat | bool
 
   tasks:
     - import_tasks: tasks/tasks.yml

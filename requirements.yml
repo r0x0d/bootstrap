@@ -7,3 +7,4 @@
 - src: robertdebock.docker_ce
 - src: robertdebock.clamav
 - src: https://github.com/scrool/ansible-role-ghidra
+- src: https://github.com/r0x0d/ansible-role-redhat
