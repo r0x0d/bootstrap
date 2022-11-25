@@ -5,6 +5,7 @@
       - rsync
       - direnv
       - poetry
+      - uuid
     state: latest
 
 - name: Install the latest version of editors

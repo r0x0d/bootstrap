@@ -4,8 +4,8 @@
     dest: "/home/{{ owner }}/.config"
     owner: "{{ owner }}"
     group: "{{ group }}"
-  when: kde | bool 
-  
+  when: kde | bool
+
 - name: Copy direnv configuration folder
   ansible.builtin.copy:
     src: ../files/direnv
@@ -13,7 +13,7 @@
     owner: "{{ owner }}"
     group: "{{ group }}"
 
-- name: Copy vim configuration folder 
+- name: Copy vim configuration folder
   ansible.builtin.copy:
     src: ../files/.vimrc
     dest: "/home/{{ owner }}/.vimrc"
@@ -42,3 +42,12 @@
     owner: "{{ owner }}"
     group: "{{ group }}"
   when: redhat | bool
+
+- name: Copy scripts to /usr/bin
+  ansible.builtin.copy:
+    src: "{{ item.src }}"
+    dest: "/usr/bin/{{ item.path }}"
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+    mode: u+x
+  with_community.general.filetree: "../files/scripts/"
