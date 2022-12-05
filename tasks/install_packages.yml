@@ -6,6 +6,8 @@
       - direnv
       - poetry
       - uuid
+      - util-linux-user
+      - fish 
     state: latest
 
 - name: Install the latest version of editors
