@@ -7,7 +7,8 @@
       - poetry
       - uuid
       - util-linux-user
-      - fish 
+      - fish
+      - task
     state: latest
 
 - name: Install the latest version of editors
