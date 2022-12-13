@@ -14,7 +14,7 @@
 - name: Install the latest version of editors
   ansible.builtin.dnf:
     name:
-      - vim
+      - vim-X11
       - code
     state: latest
 
