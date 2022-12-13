@@ -19,3 +19,16 @@
       eval "$(direnv hook bash)"
     owner: "{{ owner }}"
     group: "{{ group }}"
+
+- name: Modify history environment variables
+  become_user: "{{ owner }}"
+  blockinfile:
+    state: present
+    insertafter: EOF
+    dest: $HOME/.bashrc
+    marker: "# ANSIBLE MANAGED BLOCK"
+    content: |
+      export HISTTIMEFORMAT="%F %T"
+      export HISTFILESIZE=5000
+    owner: "{{ owner }}"
+    group: "{{ group }}"
