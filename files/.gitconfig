@@ -3,7 +3,7 @@
 [commit]
     gpgSign = true
 [core]
-    editor = vim
+    editor = vimx
 [alias]
     amendpush = add . && commit --amend --no-edit && push origin HEAD -f
     whatadded = log --diff-filter=A

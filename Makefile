@@ -17,5 +17,5 @@ provision: rsync
 vagrant: destroy up
 
 local: 
-	sudo ansible-galaxy install -r=requirements.yml -p=roles/
+	sudo ansible-galaxy install -r=requirements.yml -p=roles/ --ignore-errors
 	sudo ansible-playbook playbook.yml --extra-vars="$(ANSIBLE_EXTRA_VARS)"
