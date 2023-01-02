@@ -9,6 +9,7 @@
       - util-linux-user
       - fish
       - task
+      - xclip
     state: latest
 
 - name: Install the latest version of editors
@@ -73,3 +74,11 @@
   community.general.flatpak:
     name: com.getpostman.Postman
     state: present
+
+- name: Install neorg dependencies
+  ansible.builtin.dnf:
+    name:
+      - g++
+      - libstdc++-devel
+      - libstdc++
+    state: latest
