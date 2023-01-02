@@ -13,11 +13,26 @@
     state: present
     insertafter: EOF
     dest: $HOME/.bashrc
-    marker: "# ANSIBLE MANAGED BLOCK"
+    marker: "# ANSIBLE MANAGED BLOCK - ALIAS AND EXPORTS"
     content: |
       alias vim="vimx"
       eval "$(direnv hook bash)"
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+
+- name: Modify history environment variables
+  become_user: "{{ owner }}"
+  blockinfile:
+    state: present
+    insertafter: EOF
+    dest: $HOME/.bashrc
+    marker: "# ANSIBLE MANAGED BLOCK - ENVIRONMENT VARS"
+    content: |
+      # history
       export HISTTIMEFORMAT="%F %T"
       export HISTFILESIZE=5000
+
+      # editor
+      export EDITOR="vimx"
     owner: "{{ owner }}"
     group: "{{ group }}"
