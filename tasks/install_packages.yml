@@ -10,6 +10,7 @@
       - fish
       - task
       - xclip
+      - htop
     state: latest
 
 - name: Install the latest version of editors
