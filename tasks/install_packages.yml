@@ -1,4 +1,10 @@
 ---
+- name: Install clipboard packages for X11 and Wayland
+  ansible.builtin.dnf:
+    name:
+      - xclip # X11
+      - wl-clipboard # Wayland
+
 - name: Install misc packages
   ansible.builtin.dnf:
     name:
@@ -9,7 +15,6 @@
       - util-linux-user
       - fish
       - task
-      - xclip
       - htop
     state: latest
 
