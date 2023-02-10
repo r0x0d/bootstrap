@@ -13,10 +13,10 @@
     owner: "{{ owner }}"
     group: "{{ group }}"
 
-- name: Copy neovim configuration folder
+- name: Copy .vimrc file
   ansible.builtin.copy:
-    src: ../files/nvim
-    dest: "/home/{{ owner }}/.config/nvim"
+    src: ../files/.vimrc
+    dest: "/home/{{ owner }}/.vimrc"
     owner: "{{ owner }}"
     group: "{{ group }}"
 
