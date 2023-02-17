@@ -1,9 +1,16 @@
 ---
-- name: Install clipboard packages for X11 and Wayland
+- name: Install clipboard packages for X11
   ansible.builtin.dnf:
     name:
-      - xclip # X11
-      - wl-clipboard # Wayland
+      - xclip
+    state: latest 
+
+- name: Install clipboard package for Wayland
+  ansible.builtin.dnf:
+    name:
+      - wl-clipboard
+    state: latest
+  when: kde | bool
 
 - name: Install misc packages
   ansible.builtin.dnf:
@@ -19,10 +26,17 @@
       - p7zip
     state: latest
 
+# TODO(r0x0d): Install this only when we are doing the setup for i3wm/dwm.
+- name: Install terminal emulator
+  ansible.builtin.dnf:
+    name: 
+      - alacritty
+    state: latest
+
 - name: Install the latest version of editors
   ansible.builtin.dnf:
     name:
-      - vim-X11
+      - neovim
       - code
     state: latest
 

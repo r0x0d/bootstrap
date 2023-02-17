@@ -13,12 +13,36 @@
     owner: "{{ owner }}"
     group: "{{ group }}"
 
-- name: Copy .vimrc file
-  ansible.builtin.copy:
-    src: ../files/.vimrc
-    dest: "/home/{{ owner }}/.vimrc"
+- name: Copy neovim config to {{ owner }}
+  ansible.builtin.file:
+    src: ../files/nvim
+    dest: "/home/{{ owner }}/.config"
     owner: "{{ owner }}"
     group: "{{ group }}"
+    state: link
+
+# It's nice to have the same config while I'm on root mode.
+- name: Copy neovim config to root
+  ansible.builtin.file:
+    src: ../files/nvim
+    dest: "/home/{{ owner }}/.config"
+    owner: "root"
+    group: "root"
+    state: link
+
+# TODO(r0x0d): Skip that if it is not i3 or dwm.
+- name: Copy alacritty config
+  ansible.builtin.file:
+    src: ../files/alacritty.yml
+    dest: "/home/{{ owner }}/.config/alacritty"
+    owner: "{{ owner }}"
+    group: "{{ group }}"
+    state: link
+
+- name: Clone alacritty-themes
+  ansible.builtin.git:
+    repo: "https://github.com/alacritty/alacritty-theme"
+    dest: "/home/{{ owner }}/.config/alacritty/themes"
 
 - name: Copy top-level .gitconfig
   ansible.builtin.copy:

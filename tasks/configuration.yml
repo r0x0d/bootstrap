@@ -15,7 +15,7 @@
     dest: $HOME/.bashrc
     marker: "# ANSIBLE MANAGED BLOCK - ALIAS AND EXPORTS"
     content: |
-      alias vim="vimx"
+      alias vim="nvim"
       eval "$(direnv hook bash)"
     owner: "{{ owner }}"
     group: "{{ group }}"
@@ -33,6 +33,6 @@
       export HISTFILESIZE=5000
 
       # editor
-      export EDITOR="vimx"
+      export EDITOR="nvim"
     owner: "{{ owner }}"
     group: "{{ group }}"
