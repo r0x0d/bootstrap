@@ -24,6 +24,7 @@
       - task
       - htop
       - p7zip
+      - brightnessctl # For i3wm
     state: latest
 
 # TODO(r0x0d): Install this only when we are doing the setup for i3wm/dwm.
