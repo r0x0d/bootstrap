@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+# You can call this script like this:
+# $ ./brightness up
+# $ ./brightness down
+
+# Script inspired by these wonderful people:
+# https://github.com/dastorm/volume-notification-dunst/blob/master/volume.sh
+# https://gist.github.com/sebastiencs/5d7227f388d93374cebdf72e783fbd6a
+
+interval='5'        #Percentage by which to update the volume
+timeout='2'         #Notification timeout in seconds
+bar_char="■"        #Character to use for the volume bar
+padding="    "      #Space to pad out the bar at the left of the notification
+
+# The dunstify timeout is in milliseconds, so multiply our seconds setting by 1000
+notify_timeout=$((timeout*1000))
+
+#Icon settings
+#Base for all icons, or you can specify the full path to each
+icon_base="/usr/share/icons/breeze/actions/22"
+# Icon for when brightness is high
+icon_brightness_high="$icon_base/brightness-high.svg"
+# Icon for when brightness is low
+icon_brightness_low="$icon_base/brightness-low.svg"
+
+function send_notification {
+  brightness=$(brightnessctl g)
+  # Make the bar with the special character ─ (it's not dash -)
+  # https://en.wikipedia.org/wiki/Box-drawing_character
+  bar=$(seq -s "$bar_char" $((((brightness / 13)+2))) | sed 's/[0-9]//g')
+  
+  if [ "$brightness" -gt 127 ]; then
+    # Send the notification
+    dunstify -i "$icon_brightness_high" -t $notify_timeout -r 2593 -u normal "$padding$bar"
+  else
+    # Send the notification
+    dunstify -i "$icon_brightness_low" -t $notify_timeout -r 2593 -u normal "$padding$bar"
+  fi
+}
+
+case $1 in
+  up)
+    # increase the backlight by 5%
+    brightnessctl s 5%+
+    send_notification
+    ;;
+  down)
+    # decrease the backlight by 5%
+    brightnessctl s 5%- &>-
+    send_notification
+    ;;
+esac
