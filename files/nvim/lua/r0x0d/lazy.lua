@@ -1,19 +1,19 @@
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    'git',
-    'clone',
-    '--filter=blob:none',
-    'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', -- latest stable release
-    lazypath,
-  })
+    vim.fn.system({
+        'git',
+        'clone',
+        '--filter=blob:none',
+        'https://github.com/folke/lazy.nvim.git',
+        '--branch=stable', -- latest stable release
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
     -- Theme inspired by Atom
-    { 
+    {
         'folke/tokyonight.nvim',
         priority = 1000,
         config = function()
@@ -23,8 +23,8 @@ require('lazy').setup({
 
     -- Git related plugins
     -- All plugins related to vim-fugitive are added as a dependency
-    { 
-        'tpope/vim-fugitive', 
+    {
+        'tpope/vim-fugitive',
         dependencies = {
             'tpope/vim-rhubarb'
         }
@@ -50,13 +50,14 @@ require('lazy').setup({
             'folke/neodev.nvim',
         },
     },
+    'jose-elias-alvarez/null-ls.nvim',
 
     -- Autocompletion
     {
         'hrsh7th/nvim-cmp',
         dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
     },
- 
+
     -- Useful plugin to show you pending keybinds.
     { 'folke/which-key.nvim', opts = {} },
 
@@ -81,7 +82,7 @@ require('lazy').setup({
         -- See `:help lualine.txt`
         opts = {
             options = {
-                icons_enabled = false,
+                icons_enabled = true,
                 component_separators = '|',
                 section_separators = '',
             },
@@ -90,7 +91,6 @@ require('lazy').setup({
 
     { -- Add indentation guides even on blank lines
         'lukas-reineke/indent-blankline.nvim',
-        -- Enable `lukas-reineke/indent-blankline.nvim`
         -- See `:help indent_blankline.txt`
         opts = {
             char = '┊',
@@ -101,8 +101,21 @@ require('lazy').setup({
     -- "gc" to comment visual regions/lines
     { 'numToStr/Comment.nvim', opts = {} },
 
+    -- Telescope stuff
     -- Fuzzy Finder (files, lsp, etc)
-    { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
+    {
+        'nvim-telescope/telescope.nvim',
+        version = '*',
+        dependencies = { 'nvim-lua/plenary.nvim' }
+    },
+
+    {
+        'AckslD/nvim-neoclip.lua',
+        dependencies = {
+            'nvim-telescope/telescope.nvim',
+            'kkharji/sqlite.lua'
+        },
+    },
 
     -- Fuzzy Finder Algorithm which requires local dependencies to be built.
     -- Only load if `make` is available. Make sure you have the system
@@ -128,7 +141,47 @@ require('lazy').setup({
         end,
     },
 
-
     -- Visualize the undotree
-    "mbbill/undotree"
+    'mbbill/undotree',
+
+    -- Harpooooooon
+    'ThePrimeagen/harpoon',
+
+    -- The almighty god folke
+    {
+        'folke/todo-comments.nvim',
+        dependencies = { 'nvim-lua/plenary.nvim' }
+    },
+    {
+        'folke/trouble.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+    },
+
+    -- DAP (Debug Adapter Protocol)
+    {
+        'mfussenegger/nvim-dap',
+        dependencies = {
+            'rcarriga/nvim-dap-ui',
+
+        },
+    },
+
+    -- Testing
+    {
+        'nvim-neotest/neotest',
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            'nvim-treesitter/nvim-treesitter',
+            'nvim-neotest/neotest-python',
+        }
+    },
+
+    -- Utillity
+    {
+        'renerocksai/telekasten.nvim',
+        dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-telescope/telescope-media-files.nvim' }
+    },
+    'jbyuki/venn.nvim',
+    { 'michaelb/sniprun', build = 'bash ./install.sh 1' },
+    'simrat39/symbols-outline.nvim',
 })
