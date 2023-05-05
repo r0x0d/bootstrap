@@ -40,6 +40,10 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'path' },
+    { name = 'buffer' },
+    { name = 'git' },
   },
 }
 
+require("cmp_git").setup()

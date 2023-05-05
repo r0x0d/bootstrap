@@ -55,8 +55,16 @@ require('lazy').setup({
     -- Autocompletion
     {
         'hrsh7th/nvim-cmp',
-        dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+        dependencies = {
+            'hrsh7th/cmp-nvim-lsp',
+            'saadparwaiz1/cmp_luasnip',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-buffer',
+            'petertriho/cmp-git',
+        },
     },
+
+    { 'L3MON4D3/LuaSnip', dependencies = { 'rafamadriz/friendly-snippets' } },
 
     -- Useful plugin to show you pending keybinds.
     { 'folke/which-key.nvim', opts = {} },
@@ -176,12 +184,43 @@ require('lazy').setup({
         }
     },
 
-    -- Utillity
+    -- Neotree
     {
-        'renerocksai/telekasten.nvim',
-        dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-telescope/telescope-media-files.nvim' }
+        'nvim-neo-tree/neo-tree.nvim',
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            'nvim-tree/nvim-web-devicons',
+            'MunifTanjim/nui.nvim'
+        }
     },
+
+    -- Octo
+    {
+        'pwntester/octo.nvim',
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope.nvim',
+            'nvim-tree/nvim-web-devicons',
+        },
+    },
+
+    -- Refactoring
+    {
+        'ThePrimeagen/refactoring.nvim',
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            'nvim-treesitter/nvim-treesitter',
+        },
+    },
+
+    -- Utillity
     'jbyuki/venn.nvim',
-    { 'michaelb/sniprun', build = 'bash ./install.sh 1' },
+    { 'michaelb/sniprun', build = './install.sh' },
     'simrat39/symbols-outline.nvim',
+    { 'sindrets/diffview.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
+    {
+        "danymat/neogen",
+        dependencies = "nvim-treesitter/nvim-treesitter",
+        config = true,
+    },
 })
