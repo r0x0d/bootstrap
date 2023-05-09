@@ -53,3 +53,5 @@ vim.opt.colorcolumn = "80"
 
 -- Set the clipboard to use system-wide
 vim.opt.clipboard = "unnamedplus"
+
+vim.cmd([[highlight Pmenu guibg=#232627]])

@@ -12,15 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-    -- Theme inspired by Atom
-    {
-        'folke/tokyonight.nvim',
-        priority = 1000,
-        config = function()
-            vim.cmd.colorscheme 'tokyonight-night'
-        end,
-    },
-
     -- Git related plugins
     -- All plugins related to vim-fugitive are added as a dependency
     {
@@ -41,30 +32,9 @@ require('lazy').setup({
             -- Automatically install LSPs to stdpath for neovim
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
-
-            -- Useful status updates for LSP
-            -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-            { 'j-hui/fidget.nvim', opts = {} },
-
-            -- Additional lua configuration, makes nvim stuff amazing!
-            'folke/neodev.nvim',
         },
     },
     'jose-elias-alvarez/null-ls.nvim',
-
-    -- Autocompletion
-    {
-        'hrsh7th/nvim-cmp',
-        dependencies = {
-            'hrsh7th/cmp-nvim-lsp',
-            'saadparwaiz1/cmp_luasnip',
-            'hrsh7th/cmp-path',
-            'hrsh7th/cmp-buffer',
-            'petertriho/cmp-git',
-        },
-    },
-
-    { 'L3MON4D3/LuaSnip', dependencies = { 'rafamadriz/friendly-snippets' } },
 
     -- Useful plugin to show you pending keybinds.
     { 'folke/which-key.nvim', opts = {} },
@@ -84,28 +54,6 @@ require('lazy').setup({
         },
     },
 
-    -- Set lualine as statusline
-    {
-        'nvim-lualine/lualine.nvim',
-        -- See `:help lualine.txt`
-        opts = {
-            options = {
-                icons_enabled = true,
-                component_separators = '|',
-                section_separators = '',
-            },
-        },
-    },
-
-    { -- Add indentation guides even on blank lines
-        'lukas-reineke/indent-blankline.nvim',
-        -- See `:help indent_blankline.txt`
-        opts = {
-            char = '┊',
-            show_trailing_blankline_indent = false,
-        },
-    },
-
     -- "gc" to comment visual regions/lines
     { 'numToStr/Comment.nvim', opts = {} },
 
@@ -113,7 +61,6 @@ require('lazy').setup({
     -- Fuzzy Finder (files, lsp, etc)
     {
         'nvim-telescope/telescope.nvim',
-        version = '*',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
 
@@ -152,9 +99,6 @@ require('lazy').setup({
     -- Visualize the undotree
     'mbbill/undotree',
 
-    -- Harpooooooon
-    'ThePrimeagen/harpoon',
-
     -- The almighty god folke
     {
         'folke/todo-comments.nvim',
@@ -172,26 +116,6 @@ require('lazy').setup({
             'rcarriga/nvim-dap-ui',
 
         },
-    },
-
-    -- Testing
-    {
-        'nvim-neotest/neotest',
-        dependencies = {
-            'nvim-lua/plenary.nvim',
-            'nvim-treesitter/nvim-treesitter',
-            'nvim-neotest/neotest-python',
-        }
-    },
-
-    -- Neotree
-    {
-        'nvim-neo-tree/neo-tree.nvim',
-        dependencies = {
-            'nvim-lua/plenary.nvim',
-            'nvim-tree/nvim-web-devicons',
-            'MunifTanjim/nui.nvim'
-        }
     },
 
     -- Octo
@@ -218,9 +142,5 @@ require('lazy').setup({
     { 'michaelb/sniprun', build = './install.sh' },
     'simrat39/symbols-outline.nvim',
     { 'sindrets/diffview.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
-    {
-        "danymat/neogen",
-        dependencies = "nvim-treesitter/nvim-treesitter",
-        config = true,
-    },
+    'dstein64/vim-startuptime'
 })
