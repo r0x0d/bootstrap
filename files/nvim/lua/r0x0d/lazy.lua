@@ -12,6 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+    { 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' }},
     -- Git related plugins
     -- All plugins related to vim-fugitive are added as a dependency
     {
