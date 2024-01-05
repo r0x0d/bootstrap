@@ -1,0 +1,8 @@
+#!/bin/bash
+stty -echo
+read -s -p "Master Password: " MASTER_PASSWORD
+stty echo
+VPN_PASSWORD=$(bw get password token <<< $MASTER_PASSWORD)
+VPN_TOKEN=$(bw get totp token <<< $MASTER_PASSWORD)
+
+echo -n $VPN_PASSWORD$VPN_TOKEN | xsel -ib
